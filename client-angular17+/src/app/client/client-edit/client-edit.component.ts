@@ -22,6 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class ClientEditComponent implements OnInit{
   client!: Client;
+  errorMessage: string | null = null;
 
   constructor(
     public dialogRef: MatDialogRef<ClientEditComponent>,
@@ -34,8 +35,18 @@ export class ClientEditComponent implements OnInit{
   }
 
   onSave() {
-        this.clientService.saveClient(this.client).subscribe(() => {
-            this.dialogRef.close();
+        this.errorMessage = null;
+        this.clientService.saveClient(this.client).subscribe({
+            next: () => {
+                this.dialogRef.close();
+            },
+            error: (err) => {
+                if (err.status === 409) {
+                    this.errorMessage = "El nombre del cliente ya existe.";
+                } else {
+                    this.errorMessage = "Ha ocurrido un error inesperado.";
+                }
+            }
         });
     }
 
