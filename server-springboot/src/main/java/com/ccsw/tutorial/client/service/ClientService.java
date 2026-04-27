@@ -20,6 +20,14 @@ public interface ClientService {
     List<Client> findAll();
 
     /**
+     * Recupera un {@link Client} a partir de su ID
+     *
+     * @param id PK de la entidad
+     * @return {@link Client}
+     */
+    Client get(Long id);
+
+    /**
      * Método para crear o actualizar un cliente
      *
      * @param id  PK de la entidad

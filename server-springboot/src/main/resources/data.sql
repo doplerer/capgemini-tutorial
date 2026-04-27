@@ -34,3 +34,10 @@ INSERT INTO client(name)
 VALUES ('Claudia');
 INSERT INTO client(name)
 VALUES ('Sergio');
+
+INSERT INTO prestamo(game_id, client_id, initial_date, final_date)
+VALUES (1, 1, '2026-04-10', '2026-04-15');
+INSERT INTO prestamo(game_id, client_id, initial_date, final_date)
+VALUES (2, 2, '2026-04-15', '2026-04-20');
+INSERT INTO prestamo(game_id, client_id, initial_date, final_date)
+VALUES (3, 3, '2026-04-20', '2026-04-27');

@@ -1,0 +1,51 @@
+@if (prestamo.id) {
+    <h2 mat-dialog-title>Editar préstamo</h2>
+} @else {
+    <h2 mat-dialog-title>Crear préstamo</h2>
+}
+
+<mat-dialog-content>
+    <form class="prestamo-form">
+        <mat-form-field>
+            <mat-label>Identificador</mat-label>
+            <input type="text" matInput placeholder="Identificador" [(ngModel)]="prestamo.id" name="id" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Juego</mat-label>
+            <mat-select [(ngModel)]="prestamo.game" name="game_title" required>
+                @for (game of games; track game.id) {
+                    <mat-option [value]="game">{{game.title}}</mat-option>
+                }
+            </mat-select>
+            <mat-error>El nombre del juego no puede estar vacío</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Cliente</mat-label>
+            <mat-select [(ngModel)]="prestamo.client" name="client_name" required>
+                @for (client of clients; track client.id) {
+                    <mat-option [value]="client">{{client.name}}</mat-option>
+                }
+            </mat-select>
+            <mat-error>El nombre del cliente no puede estar vacío</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Fecha de inicio</mat-label>
+            <input type="date" matInput [(ngModel)]="prestamo.initialDate" name="first_date" required>
+            <mat-error>La fecha de inicio no puede estar vacía</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Fecha de devolución</mat-label>
+            <input type="date" matInput [(ngModel)]="prestamo.finalDate" name="final_date" required>
+            <mat-error>La fecha de devolución no puede estar vacía</mat-error>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-stroked-button (click)="onClose()">Cerrar</button>
+    <button mat-flat-button color="primary" (click)="onSave()">Guardar</button>
+</mat-dialog-actions>

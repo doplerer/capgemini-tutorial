@@ -35,6 +35,14 @@ public class ClientServiceImpl implements ClientService {
      * {@inheritDoc}
      */
     @Override
+    public Client get(Long id) {
+        return this.clientRepository.findById(id).orElse(null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void save(Long id, ClientDto dto) {
 
         Client client;

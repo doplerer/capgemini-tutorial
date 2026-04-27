@@ -21,6 +21,14 @@ public interface GameService {
     List<Game> find(String title, Long idCategory);
 
     /**
+     * Recupera un {@link Game} a partir de su ID
+     *
+     * @param id PK de la entidad
+     * @return {@link Game}
+     */
+    Game get(Long id);
+
+    /**
      * Guarda o modifica un juego, dependiendo de si el identificador está o no informado
      *
      * @param id  PK de la entidad
